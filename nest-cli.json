@@ -1,0 +1,38 @@
+{
+  "monorepo": true,
+  "root": "apps/main",
+  "sourceRoot": "apps/main/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/main/tsconfig.app.json"
+  },
+  "projects": {
+    "alert-processor": {
+      "type": "application",
+      "root": "apps/alert-processor",
+      "entryFile": "main",
+      "sourceRoot": "apps/alert-processor/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/alert-processor/tsconfig.app.json"
+      }
+    },
+    "data-collector": {
+      "type": "application",
+      "root": "apps/data-collector",
+      "entryFile": "main",
+      "sourceRoot": "apps/data-collector/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/data-collector/tsconfig.app.json"
+      }
+    },
+    "main": {
+      "type": "application",
+      "root": "apps/main",
+      "entryFile": "main",
+      "sourceRoot": "apps/main/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/main/tsconfig.app.json"
+      }
+    }
+  }
+}

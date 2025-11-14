@@ -1,0 +1,23 @@
+{
+  "name": "air-quality-monitoring-across-gcc-citites",
+  "description": "Real-time air quality monitoring system for GCC cities using NestJS microservices and RabbitMQ",
+  "scripts": {
+    "build": "nest build main",
+    "build:data-collector": "nest build data-collector",
+    "build:alert-processor": "nest build alert-processor",
+    "start:dev": "nest start main --watch",
+    "start:dev:data-collector": "nest start data-collector --watch",
+    "start:dev:alert-processor": "nest start alert-processor --watch",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down"
+  },
+  "dependencies": {
+    "@nestjs/cli": "^11.0.10"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "@types/node": "^20.14.14"
+  }
+}
