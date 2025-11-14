@@ -10,7 +10,8 @@
     "start:dev:alert-processor": "nest start alert-processor --watch",
     "docker:build": "docker-compose build",
     "docker:up": "docker-compose up",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "docker:log": "docker-compose logs"
   },
   "dependencies": {
     "@nestjs/cli": "^11.0.10"
