@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Alert {
+  id        String   @id @default(cuid())
+  city      String
+  aqi       Int
+  category  String
+  dominantPollutant String
+  timestamp DateTime
+  createdAt DateTime @default(now())
+
+  @@map("alerts")
+}
