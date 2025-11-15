@@ -13,7 +13,8 @@
       "entryFile": "main",
       "sourceRoot": "apps/alert-processor/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/alert-processor/tsconfig.app.json"
+        "tsConfigPath": "apps/alert-processor/tsconfig.app.json",
+        "webpack": false
       }
     },
     "data-collector": {
