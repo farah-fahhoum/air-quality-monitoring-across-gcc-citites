@@ -1,0 +1,55 @@
+services:
+  data-collector:
+    build:
+      context: .
+      dockerfile: apps/data-collector/Dockerfile
+    env_file:
+      - .env
+    environment:
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rabbitmq
+
+  alert-processor:
+    build:
+      context: .
+      dockerfile: apps/alert-processor/Dockerfile
+    env_file:
+      - .env
+    environment:
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+      - DATABASE_URL=postgresql://admin:wDok4xI6tXH2oEu1@postgres:5432/aq_alerts
+    ports:
+      - "3001:3001"
+    depends_on:
+      rabbitmq:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672" # AMQP
+      - "15672:15672" # Management UI
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: aq_alerts
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: wDok4xI6tXH2oEu1
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d aq_alerts"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  postgres_data:
